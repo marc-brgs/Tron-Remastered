@@ -27,12 +27,15 @@ public class GameManager : MonoBehaviour
             if(player.GetComponent<PhotonView>().IsMine)
             {
                 camera.GetComponent<CameraDrift>().target = player.transform;
+                camera.GetComponent<CameraDrift>().enabled = true;
             }
         }
         else // Solo
         {
             GameObject player = Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            player.GetComponent<PlayerMovement>().solo = true;
             camera.GetComponent<CameraDrift>().target = player.transform;
+            camera.GetComponent<CameraDrift>().enabled = true;
         }
     }
 
