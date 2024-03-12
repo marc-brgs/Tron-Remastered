@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool solo = false;
     public float forwardSpeed = 5f; // Vitesse de déplacement avant
     public float turnSpeed = 2f; // Vitesse de rotation
     public float maxSpeed = 10f; // Vitesse maximale
@@ -12,7 +14,22 @@ public class PlayerMovement : MonoBehaviour
 
     public float currentTurnSpeed = 0f;
 
+    private PhotonView view;
+
+    void Start()
+    {
+        view = GetComponent<PhotonView>();
+    }
+
     void Update()
+    {
+        if (view.IsMine || solo)
+        {
+            Move();
+        }
+    }
+
+    private void Move()
     {
         // Mouvement automatique vers l'avant
         transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);

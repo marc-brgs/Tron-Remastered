@@ -523,3 +523,4 @@ MonoBehaviour:
   maxSpeed: 10
   maxStraightSpeed: 7
   inertia: 0.8
+  currentTurnSpeed: 0
