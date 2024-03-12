@@ -6,19 +6,26 @@ using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public bool solo = false;	
-    private bool canAccel = true;
+    public bool solo = false;
 
-    public float forwardSpeed = 1f; // Vitesse de déplacement avant
-    public float forwardAcceleration = 8f;
+    public float forwardSpeed = 0f; // Vitesse de déplacement avant
+    public float forwardAcceleration = 5f;
+    public float forwardDeceleration = 5f;
     public float turnSpeed = 0.1f; // Vitesse de rotation
     public float turnAcceleration = 8f;
-    public float maxSpeed = 10f; // Vitesse maximale
-    public float maxStraightSpeed = 10f; // Vitesse maximale en ligne droite
+    public float maxSpeed = 25f; // Vitesse maximale
+    public float minStraightSpeed = 15f;
+    public float maxStraightSpeed = 25f; // Vitesse maximale en ligne droite
+    public float inclineForce = 50f;
     public float inertia = 0.5f; // Inertie de mouvement
+
+    private bool canAccel = true;
+    private bool canBrake = true;
     private float currentTurnSpeed = 0f;
     private Vector3 currentVelocity; // Nouvelle vélocité
     private Rigidbody rb;
+
+    private bool isBraking = false;
 
     private PhotonView view;
 
@@ -40,8 +47,10 @@ public class PlayerMovement : MonoBehaviour
     {
         // Mouvement automatique vers l'avant
         transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
+        Debug.Log(forwardSpeed);
+        //rb.velocity = transform.forward * forwardSpeed * Time.deltaTime;
 
-        if (canAccel == true)
+        if (canAccel && !isBraking)
         {
             // Augmentation de la vitesse en ligne droite
             if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.1f && forwardSpeed < maxStraightSpeed)
@@ -49,9 +58,20 @@ public class PlayerMovement : MonoBehaviour
                 forwardSpeed += Time.deltaTime * forwardAcceleration;
             }
         }
+        if(canBrake)
+        {
+            if (Input.GetKey(KeyCode.DownArrow) && forwardSpeed > minStraightSpeed)
+            {
+                forwardSpeed -= Time.deltaTime * forwardDeceleration;
+                isBraking = true;
+            }
+            else
+            {
+                isBraking = false;
+            }
+        }
 
-        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0);
-
+        //transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0);
 
         // Rotation de la moto
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -60,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         // Appliquer la rotation
         transform.Rotate(Vector3.up, currentTurnSpeed);
 
-        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, -currentTurnSpeed * 30);
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, -currentTurnSpeed * inclineForce);
 
         // Limiter la vitesse maximale
         /*Vector3 currentVelocity = GetComponent<Rigidbody>().velocity;
