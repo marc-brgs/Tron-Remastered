@@ -21,7 +21,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0c157f305feab184bb82b1948bd0c4c2, type: 2}
     - target: {fileID: 5107323559948329599, guid: 7520b80598c548342b2d9c160808cbfb, type: 3}
       propertyPath: m_Name
-      value: Moto_TRON
+      value: Moto_TRON orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107323559948329599, guid: 7520b80598c548342b2d9c160808cbfb, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5596579173956352197, guid: 7520b80598c548342b2d9c160808cbfb, type: 3}
       propertyPath: m_RootOrder
@@ -73,3 +77,22 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0c157f305feab184bb82b1948bd0c4c2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7520b80598c548342b2d9c160808cbfb, type: 3}
+--- !u!1 &5466562753709661908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5107323559948329599, guid: 7520b80598c548342b2d9c160808cbfb, type: 3}
+  m_PrefabInstance: {fileID: 954194034791480491}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3496701033677664385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466562753709661908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ea739bbb495c249942770e4af4efbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 0}
+  player: {fileID: 5466562753709661908}

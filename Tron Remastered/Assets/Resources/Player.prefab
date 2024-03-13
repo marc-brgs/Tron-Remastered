@@ -407,6 +407,7 @@ GameObject:
   - component: {fileID: 8775833888444362350}
   - component: {fileID: 8775833888444362351}
   - component: {fileID: 112514149}
+  - component: {fileID: 5172193958155675757}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -532,6 +533,20 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.8
-  m_Height: 5
+  m_Height: 3.6943498
   m_Direction: 2
-  m_Center: {x: 0, y: 1.8, z: -0.4}
+  m_Center: {x: 0, y: 1.8, z: 0.25282502}
+--- !u!114 &5172193958155675757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8775833888444362339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ea739bbb495c249942770e4af4efbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: 0c157f305feab184bb82b1948bd0c4c2, type: 2}
+  player: {fileID: 8775833888444362339}
