@@ -13,6 +13,8 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Start()
     {
+        Random.InitState(42); // Sync random seed
+
         SpawnObstacles();
         SpawnRamps();
     }

@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Random.InitState(42); // Sync random seed
+
         photonView = GetComponent<PhotonView>();
         SpawnPlayers();
         SetCameraFocus(playerView);
