@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Trail
   - PlayerBody
+  - Ground
   layers:
   - Default
   - TransparentFX

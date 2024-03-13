@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="568aaba9-3ff5-40e7-889d-4c3d1e51e222" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tron Remastered/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tron Remastered/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Moto_TRON orange.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Moto_TRON orange.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
@@ -12,6 +10,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ObstacleSpawner.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -75,6 +76,7 @@
       <workItem from="1710240765157" duration="142000" />
       <workItem from="1710240919868" duration="15000" />
       <workItem from="1710243222195" duration="7225000" />
+      <workItem from="1710337932491" duration="4675000" />
     </task>
     <servers />
   </component>
