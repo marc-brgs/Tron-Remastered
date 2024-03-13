@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public float inclineForce = 50f;
     public float inertia = 0.5f; // Inertie de mouvement
 
+    private bool died = false;
     private bool canAccel = true;
     private bool canBrake = true;
     private float currentTurnSpeed = 0f;
@@ -39,7 +40,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (view.IsMine || solo)
         {
-            Move();
+            if (!died)
+            {
+                Move();
+            }
         }
     }
 
@@ -47,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
     {
         // Mouvement automatique vers l'avant
         transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
-        Debug.Log(forwardSpeed);
         //rb.velocity = transform.forward * forwardSpeed * Time.deltaTime;
 
         if (canAccel && !isBraking)
@@ -71,8 +74,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0);
-
         // Rotation de la moto
         float horizontalInput = Input.GetAxis("Horizontal");
         currentTurnSpeed = Mathf.Lerp(currentTurnSpeed, horizontalInput * turnSpeed, Time.deltaTime * turnAcceleration);
@@ -81,32 +82,35 @@ public class PlayerMovement : MonoBehaviour
         transform.Rotate(Vector3.up, currentTurnSpeed);
 
         transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, -currentTurnSpeed * inclineForce);
-
-        // Limiter la vitesse maximale
-        /*Vector3 currentVelocity = GetComponent<Rigidbody>().velocity;
-        if (currentVelocity.magnitude > maxSpeed)
-        {
-            currentVelocity = currentVelocity.normalized * maxSpeed;
-            GetComponent<Rigidbody>().velocity = currentVelocity;
-        }
-
-        // Appliquer l'inertie
-        GetComponent<Rigidbody>().velocity *= inertia;*/
     }
 
+    private void Die()
+    {
+        forwardSpeed = 0;
+        died = true;
+    }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision other)
     {
         // Si la moto entre en collision avec un mur, arrête le mouvement
-        if (collision.gameObject.CompareTag("Mur"))
+        if (other.gameObject.CompareTag("Mur"))
         {
             forwardSpeed = 10f;
             canAccel = false;
+        }
+
+        if(other.gameObject.CompareTag("Trail"))
+        {
+            Debug.Log("hit");
+            Die();
         }
     }
 
     private void OnCollisionExit(Collision other)
     {
-        canAccel = true;
+        if (other.gameObject.CompareTag("Mur"))
+        {
+            canAccel = true;
+        }
     }
 }

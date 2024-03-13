@@ -180,8 +180,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2167481234113238503}
-  - component: {fileID: 8775833889017483726}
-  m_Layer: 0
+  - component: {fileID: 214359976}
+  m_Layer: 6
   m_Name: Moto_TRON orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,8 +207,8 @@ Transform:
   m_Father: {fileID: 8775833888444362338}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8775833889017483726
-BoxCollider:
+--- !u!136 &214359976
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -217,9 +217,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.6
+  m_Height: 9.7
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.2, z: -1.07}
 --- !u!1 &7245410446471598096
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +403,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8775833888444362338}
   - component: {fileID: 8775833888444362336}
-  - component: {fileID: 8775833888444362337}
   - component: {fileID: 8775833888444362349}
   - component: {fileID: 8775833888444362350}
   - component: {fileID: 8775833888444362351}
@@ -447,19 +447,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &8775833888444362337
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8775833888444362339}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.1, y: 1.62, z: 4.83}
-  m_Center: {x: 0, y: 1.8, z: -0.5}
 --- !u!114 &8775833888444362349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,9 +520,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.8
-  m_Height: 3.6943498
+  m_Height: 2.44
   m_Direction: 2
-  m_Center: {x: 0, y: 1.8, z: 0.25282502}
+  m_Center: {x: 0, y: 1.8, z: 0.8}
 --- !u!114 &5172193958155675757
 MonoBehaviour:
   m_ObjectHideFlags: 0

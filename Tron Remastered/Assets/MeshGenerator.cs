@@ -24,7 +24,7 @@ public class MeshGenerator : MonoBehaviour
     private List<int> trianglesDef;
     
     private float spawnTime = 0f;
-    private float monoSpawnDelay = 0.1f;
+    private float monoSpawnDelay = 0.07f;
     
     private int x = -1;
 
@@ -33,7 +33,7 @@ public class MeshGenerator : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         player = gameObject;
-        CreateCube();
+        //CreateCube();
     }
 
 
@@ -54,10 +54,11 @@ public class MeshGenerator : MonoBehaviour
         Vector3[] vertices = null;
         int[] triangles = null;
 
-        var backward = player.transform.position - (player.transform.forward);
+        float backwardDistance = 2f;
+        var backward = player.transform.position - (player.transform.forward * backwardDistance);
         
         // Calcul de la position Y pour la trace
-        float traceHeight = 1.5f; // Hauteur souhaitée de la trace par rapport au joueur
+        float traceHeight = 1f; // Hauteur souhaitée de la trace par rapport au joueur
         var tracePosition = new Vector3(0, traceHeight, 0);
 
         if (firstTime)
@@ -76,8 +77,9 @@ public class MeshGenerator : MonoBehaviour
                 0, 3, 2,
             };
 
-            line = new GameObject();
-           // line.tag = "Laser";
+            line = new GameObject("Player Trail");
+            line.tag = "Trail";
+            line.layer = 7; // Trail
 
             meshFilter = line.AddComponent<MeshFilter>();
             line.AddComponent<MeshRenderer>().material = mat;

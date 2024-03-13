@@ -22,7 +22,7 @@ public class CameraDrift : MonoBehaviour
     {
         Vector3 playerForward = (targetRigidbody.velocity + target.transform.forward).normalized;
         transform.position = Vector3.Lerp(transform.position,
-            target.position + target.transform.TransformVector(offset + lookAtOffset) + playerForward * (-5f),
+            target.position + target.transform.TransformVector(offset) + playerForward * (-5f),
             speed * Time.deltaTime);
         transform.LookAt(target.transform.position + lookAtOffset);
     }
