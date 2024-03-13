@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public float spawnMaxY = 20f;
 
     private PhotonView photonView;
+    private bool gameEnded = false;
 
 
     public static GameManager instance = null;
@@ -85,8 +86,11 @@ public class GameManager : MonoBehaviour
     
     public void InitiateEndGame(GameObject deadPlayer)
     {
-        int deadPlayerViewID = deadPlayer.GetComponent<PhotonView>().ViewID;
-        photonView.RPC("EndGame", RpcTarget.All, deadPlayerViewID);
+        if(!gameEnded)
+        {
+            int deadPlayerViewID = deadPlayer.GetComponent<PhotonView>().ViewID;
+            photonView.RPC("EndGame", RpcTarget.All, deadPlayerViewID);
+        }
     }
 
     [PunRPC]
@@ -106,6 +110,7 @@ public class GameManager : MonoBehaviour
             camera.GetComponent<CameraDrift>().offset = new Vector3(0f, 100f, 0f);
             winPanel.SetActive(true);
         }
+        gameEnded = true;
     }
 
     public void OnMenuClick()
