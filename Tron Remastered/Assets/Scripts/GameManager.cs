@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         {
             Vector3 randomPosition = new Vector3(Random.Range(spawnMinX, spawnMaxX), 0f, Random.Range(spawnMinY, spawnMaxY));
             GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
-            //player.GetComponent<PlayerMovement>().gameManager = this;
+            player.GetComponent<PlayerMovement>().SetRandomColor();
             if (player.GetComponent<PhotonView>().IsMine)
             {
                 playerView = player;
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         else // Solo
         {
             GameObject player = Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            //player.GetComponent<PlayerMovement>().gameManager = this;
+            player.GetComponent<PlayerMovement>().SetRandomColor();
             player.GetComponent<PlayerMovement>().solo = true;
             
             playerView = player;

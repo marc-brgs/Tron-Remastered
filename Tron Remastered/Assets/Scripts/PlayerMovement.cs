@@ -152,4 +152,27 @@ public class PlayerMovement : MonoBehaviour
         }
         return false;
     }
+
+    // Should be in another script
+    public void SetRandomColor()
+    {
+        UnityEngine.Random.InitState((int)System.DateTime.Now.Ticks);
+        // Générer une couleur aléatoire
+        Color randomColor = new Color(
+            UnityEngine.Random.Range(0f, 1f),
+            UnityEngine.Random.Range(0f, 1f),
+            UnityEngine.Random.Range(0f, 1f),
+            1f
+        );
+        Debug.Log(randomColor);
+
+        Material randomMaterial = new Material(Shader.Find("Standard"));
+        randomMaterial.color = randomColor;
+
+        this.gameObject.GetComponent<MeshGenerator>().mat.SetColor("_EmissionColor", randomColor);
+        GameObject.Find("Moto_TRON orange/corp.001").GetComponent<MeshRenderer>().materials[2].SetColor("_EmissionColor", randomColor);
+        GameObject.Find("Moto_TRON orange/moteur.001").GetComponent<MeshRenderer>().materials[2].SetColor("_EmissionColor", randomColor);
+        GameObject.Find("Moto_TRON orange/vitesse.001").GetComponent<MeshRenderer>().materials[2].SetColor("_EmissionColor", randomColor);
+        GameObject.Find("Moto_TRON orange/vitre.001").GetComponent<MeshRenderer>().materials[2].SetColor("_EmissionColor", randomColor);
+    }
 }
