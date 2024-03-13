@@ -127,9 +127,8 @@ public class PlayerMovement : MonoBehaviour
             canAccel = false;
         }
 
-        if(other.gameObject.CompareTag("Trail"))
+        if(other.gameObject.CompareTag("Trail") || other.gameObject.CompareTag("OutsideWall"))
         {
-            Debug.Log("hit");
             Die();
         }
     }
