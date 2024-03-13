@@ -24,7 +24,7 @@ public class MeshGenerator : MonoBehaviour
     private List<int> trianglesDef;
     
     private float spawnTime = 0f;
-    private float monoSpawnDelay = 0.07f;
+    private float monoSpawnDelay = 0.06f;
     
     private int x = -1;
 
