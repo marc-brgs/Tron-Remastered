@@ -8,6 +8,7 @@ public class CameraDrift : MonoBehaviour
     public Vector3 offset;
     public Vector3 lookAtOffset;
     public float speed;
+    public bool absoluteOffsetY = false; // Contrôle si l'offset Y est relatif au monde
 
     private Rigidbody targetRigidbody;
 
@@ -20,10 +21,25 @@ public class CameraDrift : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 playerForward = (targetRigidbody.velocity + target.transform.forward).normalized;
+        // Calcul de l'offset avec la composante Y optionnellement relative au monde
+        Vector3 effectiveOffset = offset;
+        if (absoluteOffsetY)
+        {
+            effectiveOffset = target.transform.TransformVector(new Vector3(offset.x, 0, offset.z))
+                + new Vector3(0, offset.y, 0); // Ajoute la composante Y de l'offset relative au monde
+        }
+        else
+        {
+            effectiveOffset = target.transform.TransformVector(offset);
+        }
+
+        Vector3 targetPositionWithOffset = target.position + effectiveOffset;
+        Vector3 playerForwardAdjustment = (targetRigidbody.velocity + target.transform.forward).normalized * (-5f);
+
         transform.position = Vector3.Lerp(transform.position,
-            target.position + target.transform.TransformVector(offset) + playerForward * (-5f),
+            targetPositionWithOffset + playerForwardAdjustment,
             speed * Time.deltaTime);
+
         transform.LookAt(target.transform.position + lookAtOffset);
     }
 }

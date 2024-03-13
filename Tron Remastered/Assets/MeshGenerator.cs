@@ -54,7 +54,7 @@ public class MeshGenerator : MonoBehaviour
         Vector3[] vertices = null;
         int[] triangles = null;
 
-        float backwardDistance = 2f;
+        float backwardDistance = 1.5f;
         var backward = player.transform.position - (player.transform.forward * backwardDistance);
         
         // Calcul de la position Y pour la trace

@@ -63,7 +63,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 6ca4b2f0bca802b44ab5d072e22ad60b, type: 2}
   - {fileID: 2100000, guid: e3fc1441265e7d84fb3ea82228ed3898, type: 2}
-  - {fileID: 2100000, guid: 0c157f305feab184bb82b1948bd0c4c2, type: 2}
+  - {fileID: 2100000, guid: 439d484b0591d004b912c371dbffe182, type: 2}
   - {fileID: 2100000, guid: ceeeb8b2df2800141ad38f4d07d1e3db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -149,7 +149,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: e3fc1441265e7d84fb3ea82228ed3898, type: 2}
   - {fileID: 2100000, guid: 6ca4b2f0bca802b44ab5d072e22ad60b, type: 2}
-  - {fileID: 2100000, guid: 0c157f305feab184bb82b1948bd0c4c2, type: 2}
+  - {fileID: 2100000, guid: 439d484b0591d004b912c371dbffe182, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -284,7 +284,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 6ca4b2f0bca802b44ab5d072e22ad60b, type: 2}
   - {fileID: 2100000, guid: e3fc1441265e7d84fb3ea82228ed3898, type: 2}
-  - {fileID: 2100000, guid: 0c157f305feab184bb82b1948bd0c4c2, type: 2}
+  - {fileID: 2100000, guid: 439d484b0591d004b912c371dbffe182, type: 2}
   - {fileID: 2100000, guid: ceeeb8b2df2800141ad38f4d07d1e3db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -370,7 +370,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: e3fc1441265e7d84fb3ea82228ed3898, type: 2}
   - {fileID: 2100000, guid: 6ca4b2f0bca802b44ab5d072e22ad60b, type: 2}
-  - {fileID: 2100000, guid: 0c157f305feab184bb82b1948bd0c4c2, type: 2}
+  - {fileID: 2100000, guid: 439d484b0591d004b912c371dbffe182, type: 2}
   - {fileID: 2100000, guid: ceeeb8b2df2800141ad38f4d07d1e3db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -463,9 +463,8 @@ MonoBehaviour:
   forwardSpeed: 10
   forwardAcceleration: 5
   forwardDeceleration: 4
-  turnSpeed: 0.7
+  turnSpeed: 0.5
   turnAcceleration: 3
-  maxSpeed: 25
   minStraightSpeed: 15
   maxStraightSpeed: 35
   inclineForce: 35
@@ -535,5 +534,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ea739bbb495c249942770e4af4efbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 0c157f305feab184bb82b1948bd0c4c2, type: 2}
+  mat: {fileID: 2100000, guid: 439d484b0591d004b912c371dbffe182, type: 2}
   player: {fileID: 8775833888444362339}
