@@ -4,6 +4,8 @@ using UnityEngine;
 using Photon.Pun;
 using TMPro;
 using UnityEngine.UI;
+using Photon.Pun.Demo.PunBasics;
+using Photon.Realtime;
 
 public class GameManager : MonoBehaviour
 {
@@ -65,12 +67,14 @@ public class GameManager : MonoBehaviour
             int seed = Random.Range(0, int.MaxValue);
             photonView.RPC("SpawnObstacles", RpcTarget.AllBuffered, seed);
         }
-
+        
         SpawnPlayer();
         SetCameraFocus(playerView);
+
+        int playerViewID = playerView.GetComponent<PhotonView>().ViewID;
+        photonView.RPC("SetColor", RpcTarget.AllBuffered, playerViewID);
         gameStarted = true;
         waitingPanel.SetActive(false);
-        playerView.GetComponent<PlayerMovement>().SetPlayerMaterial();
     }
 
     public void RestartGame()
@@ -79,11 +83,23 @@ public class GameManager : MonoBehaviour
     }
 
     [PunRPC]
+    private void SetColor(int playerViewID)
+    {
+        GameObject player = PhotonView.Find(playerViewID).gameObject;
+        int actorNumber = PhotonView.Find(playerViewID).OwnerActorNr;
+
+        // Get corresponding material
+        int matIndex = actorNumber % playerMaterials.Length;
+        Material playerMaterial = playerMaterials[matIndex];
+        player.GetComponent<PlayerMovement>().SetPlayerMaterial(playerMaterial);
+    }
+
+    [PunRPC]
     private void SpawnObstacles(int seed)
     {
         obstacleSpawner.Spawn(seed);
     }
-
+    
     private void SpawnPlayer()
     {
         if (PhotonNetwork.InRoom) // Multi

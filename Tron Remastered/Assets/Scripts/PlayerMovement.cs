@@ -217,21 +217,17 @@ public class PlayerMovement : MonoBehaviour
         //GameObject.Find("Moto_TRON orange/vitre.001").GetComponent<MeshRenderer>().materials[2].SetColor("_EmissionColor", randomColor);
     }
 
-    public void SetPlayerMaterial()
+    public void SetPlayerMaterial(Material mat)
     {
-        int index = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % GameManager.instance.playerMaterials.Length;
-
-        Material playerMaterial = gameManager.playerMaterials[index];
-
-        this.gameObject.GetComponent<MeshGenerator>().mat = playerMaterial;
+        this.gameObject.GetComponent<MeshGenerator>().mat = mat;
         GameObject corp = this.gameObject.transform.Find("Moto_TRON orange/corp.001").gameObject;
         GameObject moteur = this.gameObject.transform.Find("Moto_TRON orange/moteur.001").gameObject;
         GameObject vitesse = this.gameObject.transform.Find("Moto_TRON orange/vitesse.001").gameObject;
         GameObject vitre = this.gameObject.transform.Find("Moto_TRON orange/vitre.001").gameObject;
-        ReplaceMaterial(corp, 2, playerMaterial);
-        ReplaceMaterial(moteur, 2, playerMaterial);
-        ReplaceMaterial(vitesse, 2, playerMaterial);
-        ReplaceMaterial(vitre, 2, playerMaterial);
+        ReplaceMaterial(corp, 2, mat);
+        ReplaceMaterial(moteur, 2, mat);
+        ReplaceMaterial(vitesse, 2, mat);
+        ReplaceMaterial(vitre, 2, mat);
     }
 
     private void ReplaceMaterial(GameObject obj, int materialIndex, Material newMaterial)
