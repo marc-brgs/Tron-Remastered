@@ -29,7 +29,7 @@ Material:
     - _Alpha: 0.5
     - _GridLineThickness: 0.0087
     - _GridSize: 0.199
-    - _Intensity: 0
+    - _Intensity: 3
     m_Colors:
     - _GridColour: {r: 0, g: 2, b: 0.015686275, a: 1}
   m_BuildTextureStacks: []
