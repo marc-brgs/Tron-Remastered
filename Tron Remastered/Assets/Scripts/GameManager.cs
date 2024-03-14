@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,16 +13,16 @@ public class GameManager : MonoBehaviour
     public TMP_Text speed;
     public GameObject gameOverPanel;
     public GameObject winPanel;
+    public GameObject waitingPanel;
+    public Slider boostSlider;
 
-    public float spawnMinX = -20f;
-    public float spawnMaxX = 20f;
-    public float spawnMinY = -20f;
-    public float spawnMaxY = 20f;
+    public Material[] playerMaterials;
+    public Vector3[] spawnPositions;
 
     private PhotonView photonView;
+    private bool gameStarted = false;
     private bool gameEnded = false;
-
-
+    
     public static GameManager instance = null;
     private void Awake()
     {
@@ -36,27 +37,42 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     void Start()
     {
-        Random.InitState(42); // Sync random seed
-
         photonView = GetComponent<PhotonView>();
-        SpawnPlayers();
-        SetCameraFocus(playerView);
     }
 
     void Update()
     {
-        UpdateSpeed();
+        if(!gameStarted && PhotonNetwork.PlayerList.Length == 2) {
+            StartGame();
+        }
+        
+        if(gameStarted)
+        {
+            UpdateSpeed();
+            UpdateBoost();
+        }
     }
 
-    private void SpawnPlayers()
+    public void StartGame()
+    {
+        SpawnPlayer();
+        SetCameraFocus(playerView);
+        gameStarted = true;
+        waitingPanel.SetActive(false);
+        playerView.GetComponent<PlayerMovement>().SetPlayerMaterial();
+    }
+    
+    private void SpawnPlayer()
     {
         if (PhotonNetwork.InRoom) // Multi
         {
-            Vector3 randomPosition = new Vector3(Random.Range(spawnMinX, spawnMaxX), 0f, Random.Range(spawnMinY, spawnMaxY));
-            GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
-            player.GetComponent<PlayerMovement>().SetRandomColor();
+            int index = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % spawnPositions.Length;
+            Vector3 spawnPosition = spawnPositions[index];
+
+            GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition, Quaternion.identity);
             if (player.GetComponent<PhotonView>().IsMine)
             {
                 playerView = player;
@@ -65,13 +81,13 @@ public class GameManager : MonoBehaviour
         else // Solo
         {
             GameObject player = Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            player.GetComponent<PlayerMovement>().SetRandomColor();
+            //player.GetComponent<PlayerMovement>().SetRandomColor();
             player.GetComponent<PlayerMovement>().solo = true;
             
             playerView = player;
         }
     }
-
+    
     private void SetCameraFocus(GameObject target)
     {
         camera.GetComponent<CameraDrift>().target = target.transform;
@@ -85,6 +101,13 @@ public class GameManager : MonoBehaviour
             float speedMultiplier = 2f;
             speed.text = (playerView.GetComponent<PlayerMovement>().forwardSpeed * speedMultiplier).ToString("F1");
         }
+    }
+
+    private void UpdateBoost()
+    {
+        float currentBoost = playerView.GetComponent<PlayerMovement>().currentBoost;
+        float maxBoost = playerView.GetComponent<PlayerMovement>().maxBoost;
+        boostSlider.value = currentBoost / maxBoost;
     }
     
     public void InitiateEndGame(GameObject deadPlayer)
