@@ -6,8 +6,10 @@ public class ObstacleSpawner : MonoBehaviour
 {
     public GameObject obstaclePrefab;
     public GameObject rampPrefab;
+    public GameObject cylinderPrefab;
     public int numberOfObstacles = 10;
     public int numberOfRamps = 5;
+    public int numberOfCylinders = 5;
     public float spawnRadius = 200f;
     public float minDistance = 10f; // Distance minimale souhaitée entre les obstacles
 
@@ -17,6 +19,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         SpawnObstacles();
         SpawnRamps();
+        SpawnCylinder();
     }
 
     void SpawnObstacles()
@@ -58,12 +61,40 @@ public class ObstacleSpawner : MonoBehaviour
                 GameObject ramp = Instantiate(rampPrefab, spawnPosition, spawnRotation);
                 // Définir l'échelle de manière aléatoire
                 Vector3 scale = ramp.transform.localScale;
-                float randomScaleFactor = Random.Range(1f, 2f); // Random scale factor between 1 and 2
+                float randomScaleFactor = Random.Range(1f, 3f); // Random scale factor between 1 and 2
                 ramp.transform.localScale = new Vector3(scale.x * randomScaleFactor, scale.y * randomScaleFactor, scale.z * randomScaleFactor);
                 // Vous pouvez ajouter toute personnalisation supplémentaire pour la rampe ici
             }
         }
     }
+    
+    void SpawnCylinder()
+    {
+        for (int i = 0; i < numberOfCylinders; i++)
+        {
+            Vector3 randomPosition = Random.insideUnitCircle * spawnRadius;
+            Vector3 spawnPosition = new Vector3(randomPosition.x, 25, randomPosition.y);
+            spawnPosition += transform.position; // Offset by spawner position
+            Quaternion spawnRotation = Quaternion.Euler(Random.Range(-60, 60), 0, Random.Range(-20, 20)); // Random rotation on Y axis
+
+            // Vérifie si la nouvelle position est suffisamment éloignée des autres obstacles
+            if (IsPositionValid(spawnPosition))
+            {
+                // Créer la rampe
+                GameObject cylinder = Instantiate(cylinderPrefab, spawnPosition, spawnRotation);
+                // Définir l'échelle de manière aléatoire
+                Vector3 scale = cylinder.transform.localScale;
+                float randomScaleFactor = Random.Range(1f, 2f); // Random scale factor between 1 and 2
+                cylinder.transform.localScale = new Vector3(scale.x * randomScaleFactor, scale.y * randomScaleFactor, scale.z * randomScaleFactor);
+                // Vous pouvez ajouter toute personnalisation supplémentaire pour la rampe ici
+            }
+        }
+    }
+    
+    
+    
+    
+    
 
     // Vérifie si la position spécifiée est suffisamment éloignée des autres obstacles
     private bool IsPositionValid(Vector3 position)
