@@ -175,4 +175,38 @@ public class PlayerMovement : MonoBehaviour
         GameObject.Find("Moto_TRON orange/vitesse.001").GetComponent<MeshRenderer>().materials[2].SetColor("_EmissionColor", randomColor);
         GameObject.Find("Moto_TRON orange/vitre.001").GetComponent<MeshRenderer>().materials[2].SetColor("_EmissionColor", randomColor);
     }
+
+    public void SetPlayerMaterial()
+    {
+        int index = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % GameManager.instance.playerMaterials.Length;
+
+        Material playerMaterial = gameManager.playerMaterials[index];
+
+        this.gameObject.GetComponent<MeshGenerator>().mat = playerMaterial;
+        GameObject corp = this.gameObject.transform.Find("Moto_TRON orange/corp.001").gameObject;
+        GameObject moteur = this.gameObject.transform.Find("Moto_TRON orange/moteur.001").gameObject;
+        GameObject vitesse = this.gameObject.transform.Find("Moto_TRON orange/vitesse.001").gameObject;
+        GameObject vitre = this.gameObject.transform.Find("Moto_TRON orange/vitre.001").gameObject;
+        ReplaceMaterial(corp, 2, playerMaterial);
+        ReplaceMaterial(moteur, 2, playerMaterial);
+        ReplaceMaterial(vitesse, 2, playerMaterial);
+        ReplaceMaterial(vitre, 2, playerMaterial);
+    }
+
+    private void ReplaceMaterial(GameObject obj, int materialIndex, Material newMaterial)
+    {
+        if (obj != null)
+        {
+            MeshRenderer renderer = obj.GetComponent<MeshRenderer>();
+            if (renderer != null)
+            {
+                Material[] materials = renderer.materials; // Récupère une copie du tableau de matériaux
+                if (materials.Length > materialIndex)
+                {
+                    materials[materialIndex] = newMaterial; // Modifie la copie du tableau
+                    renderer.materials = materials; // Réaffecte le tableau modifié au MeshRenderer
+                }
+            }
+        }
+    }
 }
