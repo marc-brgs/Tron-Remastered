@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentTurnSpeed = 0f;
     private Rigidbody rb;
     private Vector3 averageDirection = Vector3.forward;
+    public ParticleSystem explosion;
 
     private bool isBraking = false;
 
@@ -116,7 +117,9 @@ public class PlayerMovement : MonoBehaviour
         forwardSpeed = 0;
         died = true;
         gameManager.InitiateEndGame(this.gameObject);
+        explosion.Play();
         Destroy(GameObject.Find("Player Trail"));
+        
     }
 
     private void OnCollisionEnter(Collision other)
