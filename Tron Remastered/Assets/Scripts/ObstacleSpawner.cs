@@ -75,7 +75,7 @@ public class ObstacleSpawner : MonoBehaviour
             Vector3 randomPosition = Random.insideUnitCircle * spawnRadius;
             Vector3 spawnPosition = new Vector3(randomPosition.x, 25, randomPosition.y);
             spawnPosition += transform.position; // Offset by spawner position
-            Quaternion spawnRotation = Quaternion.Euler(Random.Range(-60, 60), 0, Random.Range(-20, 20)); // Random rotation on Y axis
+            Quaternion spawnRotation = Quaternion.Euler(Random.Range(-80, 80), 0, Random.Range(-20, 20)); // Random rotation on Y axis
 
             // Vérifie si la nouvelle position est suffisamment éloignée des autres obstacles
             if (IsPositionValid(spawnPosition))

@@ -766,9 +766,9 @@ MonoBehaviour:
   obstaclePrefab: {fileID: 8307869483345094651, guid: 876ec6efec816f34ca11e758ae32893a, type: 3}
   rampPrefab: {fileID: 4447418186604449429, guid: 109c448328dbfdc4fb08e155a5a1e55d, type: 3}
   cylinderPrefab: {fileID: 2679768731795436336, guid: 272538c64526ad54baa7fc95c2d6770e, type: 3}
-  numberOfObstacles: 20
-  numberOfRamps: 20
-  numberOfCylinders: 5
+  numberOfObstacles: 0
+  numberOfRamps: 0
+  numberOfCylinders: 80
   spawnRadius: 200
   minDistance: 20
 --- !u!1 &2063498164

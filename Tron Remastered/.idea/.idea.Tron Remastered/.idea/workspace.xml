@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="568aaba9-3ff5-40e7-889d-4c3d1e51e222" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tron Remastered/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tron Remastered/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Rampe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Rampe.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Loading.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Loading.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ObstacleSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ObstacleSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shader/Grid.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shader/Grid.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +78,7 @@
       <workItem from="1710240919868" duration="15000" />
       <workItem from="1710243222195" duration="7225000" />
       <workItem from="1710337932491" duration="10485000" />
-      <workItem from="1710428146121" duration="6301000" />
+      <workItem from="1710428146121" duration="6719000" />
     </task>
     <servers />
   </component>
