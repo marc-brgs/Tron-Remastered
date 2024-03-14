@@ -463,15 +463,15 @@ MonoBehaviour:
   solo: 0
   forwardSpeed: 10
   brakePower: 16
-  turnSpeed: 0.5
-  turnAcceleration: 3
+  turnSpeed: 0.4
+  turnAcceleration: 4
   minStraightSpeed: 20
   maintainedSpeed: 30
   maxStraightSpeed: 60
   inclineForce: 35
   maxBoost: 100
   currentBoost: 100
-  boostPower: 10
+  boostPower: 15
   boostConsumption: 40
   boostRechargePower: 35
   airResistance: 5

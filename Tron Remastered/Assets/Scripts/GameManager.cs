@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
             StartGame();
         }
         
-        if(gameStarted)
+        if(gameStarted && !gameEnded)
         {
             UpdateSpeed();
             UpdateBoost();

@@ -12,15 +12,15 @@ public class PlayerMovement : MonoBehaviour
 
     public float forwardSpeed = 10f; // Vitesse de déplacement avant
     public float brakePower = 16f;
-    public float turnSpeed = 0.5f; // Vitesse de rotation
-    public float turnAcceleration = 8f;
+    public float turnSpeed = 0.4f; // Vitesse de rotation
+    public float turnAcceleration = 4f;
     public float minStraightSpeed = 20f;
     public float maintainedSpeed = 30f;
     public float maxStraightSpeed = 60f; // Vitesse maximale en ligne droite
     public float inclineForce = 35f;
     public float maxBoost = 100f;
     public float currentBoost = 100f;
-    public float boostPower = 10f;
+    public float boostPower = 15f;
     public float boostConsumption = 40f;
     public float boostRechargePower = 35f;
     public float airResistance = 5f;
@@ -118,7 +118,6 @@ public class PlayerMovement : MonoBehaviour
                     if (forwardSpeed > maintainedSpeed) forwardSpeed = maintainedSpeed;
                 }
             }
-            Debug.Log(currentBoost);
         }
         if(canBrake)
         {
