@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject winPanel;
     public GameObject waitingPanel;
+    public Slider boostSlider;
 
     public Material[] playerMaterials;
     public Vector3[] spawnPositions;
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
         if(gameStarted)
         {
             UpdateSpeed();
+            UpdateBoost();
         }
     }
 
@@ -78,7 +81,7 @@ public class GameManager : MonoBehaviour
         else // Solo
         {
             GameObject player = Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            player.GetComponent<PlayerMovement>().SetRandomColor();
+            //player.GetComponent<PlayerMovement>().SetRandomColor();
             player.GetComponent<PlayerMovement>().solo = true;
             
             playerView = player;
@@ -95,6 +98,13 @@ public class GameManager : MonoBehaviour
     {
         float speedMultiplier = 2f;
         speed.text = (playerView.GetComponent<PlayerMovement>().forwardSpeed * speedMultiplier).ToString("F1");
+    }
+
+    private void UpdateBoost()
+    {
+        float currentBoost = playerView.GetComponent<PlayerMovement>().currentBoost;
+        float maxBoost = playerView.GetComponent<PlayerMovement>().maxBoost;
+        boostSlider.value = currentBoost / maxBoost;
     }
     
     public void InitiateEndGame(GameObject deadPlayer)

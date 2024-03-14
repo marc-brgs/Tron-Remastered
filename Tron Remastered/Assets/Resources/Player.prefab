@@ -460,15 +460,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solo: 0
-  forwardSpeed: 10
-  forwardAcceleration: 5
-  forwardDeceleration: 4
+  forwardSpeed: 30
+  forwardAcceleration: 8
+  brakePower: 8
   turnSpeed: 0.5
   turnAcceleration: 3
-  minStraightSpeed: 15
-  maxStraightSpeed: 35
+  minStraightSpeed: 30
+  maxStraightSpeed: 60
   inclineForce: 35
-  inertia: 1
+  maxBoost: 100
+  currentBoost: 100
+  boostPower: 10
+  boostConsumption: 20
+  boostRechargePower: 10
+  airResistance: 5
 --- !u!114 &8775833888444362350
 MonoBehaviour:
   m_ObjectHideFlags: 0
