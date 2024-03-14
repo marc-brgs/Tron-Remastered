@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour
     public float spawnMaxY = 20f;
 
     private PhotonView photonView;
+    private bool gameStarted = false;
     private bool gameEnded = false;
-
-
+    
     public static GameManager instance = null;
     private void Awake()
     {
@@ -36,21 +36,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     void Start()
     {
-        Random.InitState(42); // Sync random seed
-
         photonView = GetComponent<PhotonView>();
-        SpawnPlayers();
-        SetCameraFocus(playerView);
     }
 
     void Update()
     {
-        UpdateSpeed();
+        if(!gameStarted && PhotonNetwork.PlayerList.Length == 2) {
+            SpawnPlayer();
+            SetCameraFocus(playerView);
+            gameStarted = true;
+        }
+        
+        if(gameStarted)
+        {
+            UpdateSpeed();
+        }
     }
-
-    private void SpawnPlayers()
+    
+    private void SpawnPlayer()
     {
         if (PhotonNetwork.InRoom) // Multi
         {
