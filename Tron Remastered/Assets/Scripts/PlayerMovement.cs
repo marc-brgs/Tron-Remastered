@@ -160,7 +160,6 @@ public class PlayerMovement : MonoBehaviour
         {
             forwardSpeed = 20f;
             canAccel = false;
-            Debug.Log("hit wall");
         }
 
         if(other.gameObject.CompareTag("Trail") || other.gameObject.CompareTag("OutsideWall"))
