@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     private PhotonView photonView;
     private bool gameStarted = false;
     private bool gameEnded = false;
+    private ObstacleSpawner obstacleSpawner;
     
     public static GameManager instance = null;
     private void Awake()
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         photonView = GetComponent<PhotonView>();
+        obstacleSpawner = GetComponent<ObstacleSpawner>();
     }
 
     void Update()
@@ -58,13 +60,26 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            // Le MasterClient génère un seed aléatoire
+            int seed = Random.Range(0, int.MaxValue);
+            photonView.RPC("SpawnObstacles", RpcTarget.AllBuffered, seed);
+        }
+
         SpawnPlayer();
         SetCameraFocus(playerView);
         gameStarted = true;
         waitingPanel.SetActive(false);
         playerView.GetComponent<PlayerMovement>().SetPlayerMaterial();
     }
-    
+
+    [PunRPC]
+    private void SpawnObstacles(int seed)
+    {
+        obstacleSpawner.Spawn(seed);
+    }
+
     private void SpawnPlayer()
     {
         if (PhotonNetwork.InRoom) // Multi

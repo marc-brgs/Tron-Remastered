@@ -13,9 +13,9 @@ public class ObstacleSpawner : MonoBehaviour
     public float spawnRadius = 200f;
     public float minDistance = 10f; // Distance minimale souhaitée entre les obstacles
 
-    void Start()
+    public void Spawn(int seed)
     {
-        Random.InitState(42); // Sync random seed
+        Random.InitState(seed);
 
         SpawnObstacles();
         SpawnRamps();
