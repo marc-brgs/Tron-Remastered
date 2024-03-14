@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        float convergenceSpeed = 10f;
+        float convergenceSpeed = 2f;
         // Mouvement automatique vers l'avant
         Vector3 targetDirection;
 
