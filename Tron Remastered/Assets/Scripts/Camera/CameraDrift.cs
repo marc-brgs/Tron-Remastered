@@ -8,7 +8,7 @@ public class CameraDrift : MonoBehaviour
     public Vector3 offset;
     public Vector3 lookAtOffset;
     public float speed;
-    public bool absoluteOffsetY = false; // Contrôle si l'offset Y est relatif au monde
+    public bool absoluteOffsetY = false; // Contrï¿½le si l'offset Y est relatif au monde
 
     private Rigidbody targetRigidbody;
 
@@ -21,6 +21,9 @@ public class CameraDrift : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target == null)
+            return;
+        
         // Calcul de l'offset avec la composante Y optionnellement relative au monde
         Vector3 effectiveOffset = offset;
         if (absoluteOffsetY)

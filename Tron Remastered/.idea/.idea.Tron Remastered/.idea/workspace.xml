@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="568aaba9-3ff5-40e7-889d-4c3d1e51e222" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tron Remastered/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tron Remastered/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Material.001.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Material.001.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MeshGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MeshGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraDrift.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraDrift.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +80,7 @@
       <workItem from="1710240765157" duration="142000" />
       <workItem from="1710240919868" duration="15000" />
       <workItem from="1710243222195" duration="7225000" />
-      <workItem from="1710337932491" duration="4675000" />
+      <workItem from="1710337932491" duration="7848000" />
     </task>
     <servers />
   </component>

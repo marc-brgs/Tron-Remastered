@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Unity.VisualScripting;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -114,8 +115,8 @@ public class PlayerMovement : MonoBehaviour
     {
         forwardSpeed = 0;
         died = true;
-        
         gameManager.InitiateEndGame(this.gameObject);
+        Destroy(GameObject.Find("Player Trail"));
     }
 
     private void OnCollisionEnter(Collision other)

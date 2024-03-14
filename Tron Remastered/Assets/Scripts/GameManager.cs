@@ -80,8 +80,11 @@ public class GameManager : MonoBehaviour
 
     private void UpdateSpeed()
     {
-        float speedMultiplier = 2f;
-        speed.text = (playerView.GetComponent<PlayerMovement>().forwardSpeed * speedMultiplier).ToString("F1");
+        if (playerView != null && playerView.GetComponent<PlayerMovement>() != null)
+        {
+            float speedMultiplier = 2f;
+            speed.text = (playerView.GetComponent<PlayerMovement>().forwardSpeed * speedMultiplier).ToString("F1");
+        }
     }
     
     public void InitiateEndGame(GameObject deadPlayer)

@@ -31,7 +31,7 @@ public class MeshGenerator : MonoBehaviour
     
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
         player = gameObject;
         //CreateCube();
     }
@@ -176,17 +176,21 @@ public class MeshGenerator : MonoBehaviour
         }
 
         x += 4;
+        
+        if (meshFilter == null)
+        {
+            // Arrête le traitement si le MeshFilter est nul
+            return;
+        }
+        
         meshFilter.mesh.vertices = verticesDef.ToArray();
         meshFilter.mesh.triangles = trianglesDef.ToArray();
 
         meshCollider.sharedMesh = meshFilter.mesh;
     }
-    
-    
-    
-    
-    
-    
+
+
+
 
     private void CreateCube()
     {
