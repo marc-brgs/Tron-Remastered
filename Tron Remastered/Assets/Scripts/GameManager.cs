@@ -62,7 +62,6 @@ public class GameManager : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            // Le MasterClient génère un seed aléatoire
             int seed = Random.Range(0, int.MaxValue);
             photonView.RPC("SpawnObstacles", RpcTarget.AllBuffered, seed);
         }
@@ -72,6 +71,11 @@ public class GameManager : MonoBehaviour
         gameStarted = true;
         waitingPanel.SetActive(false);
         playerView.GetComponent<PlayerMovement>().SetPlayerMaterial();
+    }
+
+    public void RestartGame()
+    {
+
     }
 
     [PunRPC]
