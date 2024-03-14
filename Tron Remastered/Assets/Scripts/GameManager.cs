@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
     {
         float currentBoost = playerView.GetComponent<PlayerMovement>().currentBoost;
         float maxBoost = playerView.GetComponent<PlayerMovement>().maxBoost;
+        if (currentBoost < 0) currentBoost = 0; // Do not display delay
         boostSlider.value = currentBoost / maxBoost;
     }
     

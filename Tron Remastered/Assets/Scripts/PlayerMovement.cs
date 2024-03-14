@@ -10,20 +10,21 @@ public class PlayerMovement : MonoBehaviour
     private GameManager gameManager = GameManager.instance;
     public bool solo = false;
 
-    public float forwardSpeed = 30f; // Vitesse de déplacement avant
-    public float forwardAcceleration = 8f;
-    public float brakePower = 8f;
+    public float forwardSpeed = 10f; // Vitesse de déplacement avant
+    public float brakePower = 16f;
     public float turnSpeed = 0.5f; // Vitesse de rotation
     public float turnAcceleration = 8f;
-    public float minStraightSpeed = 30f;
+    public float minStraightSpeed = 20f;
+    public float maintainedSpeed = 30f;
     public float maxStraightSpeed = 60f; // Vitesse maximale en ligne droite
     public float inclineForce = 35f;
     public float maxBoost = 100f;
     public float currentBoost = 100f;
     public float boostPower = 10f;
-    public float boostConsumption = 20f;
-    public float boostRechargePower = 10f;
+    public float boostConsumption = 40f;
+    public float boostRechargePower = 35f;
     public float airResistance = 5f;
+    public float airAcceleration = 5f;
     
     private bool died = false;
     private bool canAccel = true;
@@ -88,18 +89,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (canAccel && !isBraking)
         {
-            // Augmentation de la vitesse en ligne droite
-            /*if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.1f && forwardSpeed < maxStraightSpeed)
-            {
-                forwardSpeed += Time.deltaTime * forwardAcceleration;
-            }*/
             if(Input.GetKey(KeyCode.UpArrow) && currentBoost > 0f)
             {
 
                 forwardSpeed += boostPower * Time.deltaTime;
                 currentBoost -= boostConsumption * Time.deltaTime;
                 if (forwardSpeed > maxStraightSpeed) forwardSpeed = maxStraightSpeed;
-                if (currentBoost < 0) currentBoost = 0;
+                if (currentBoost < 0) currentBoost = -10;
             }
             else
             {
@@ -110,10 +106,16 @@ public class PlayerMovement : MonoBehaviour
                     if (currentBoost > maxBoost) currentBoost = maxBoost;
                 }
                 // Deceleration
-                if (forwardSpeed > minStraightSpeed)
+                if (forwardSpeed > maintainedSpeed)
                 {
                     forwardSpeed -= airResistance * Time.deltaTime;
-                    if (forwardSpeed < minStraightSpeed) forwardSpeed = minStraightSpeed;
+                    if (forwardSpeed < maintainedSpeed) forwardSpeed = maintainedSpeed;
+                }
+                // Acceleration
+                if(forwardSpeed < maintainedSpeed)
+                {
+                    forwardSpeed += airAcceleration * Time.deltaTime;
+                    if (forwardSpeed > maintainedSpeed) forwardSpeed = maintainedSpeed;
                 }
             }
             Debug.Log(currentBoost);
@@ -123,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.DownArrow) && forwardSpeed > minStraightSpeed)
             {
                 forwardSpeed -= brakePower * Time.deltaTime;
+                if (forwardSpeed < minStraightSpeed) forwardSpeed = minStraightSpeed;
                 isBraking = true;
             }
             else
