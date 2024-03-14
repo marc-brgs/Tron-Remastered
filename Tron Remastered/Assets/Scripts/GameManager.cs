@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text speed;
     public GameObject gameOverPanel;
     public GameObject winPanel;
+    public GameObject waitingPanel;
 
     public float spawnMinX = -20f;
     public float spawnMaxX = 20f;
@@ -45,15 +46,21 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if(!gameStarted && PhotonNetwork.PlayerList.Length == 2) {
-            SpawnPlayer();
-            SetCameraFocus(playerView);
-            gameStarted = true;
+            StartGame();
         }
         
         if(gameStarted)
         {
             UpdateSpeed();
         }
+    }
+
+    public void StartGame()
+    {
+        SpawnPlayer();
+        SetCameraFocus(playerView);
+        gameStarted = true;
+        waitingPanel.SetActive(false);
     }
     
     private void SpawnPlayer()
