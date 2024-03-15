@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public bool solo = false;
 
     public AudioSource engineSound;
+    public AudioSource exploSound;
     public float forwardSpeed = 10f; // Vitesse de déplacement avant
     public float brakePower = 16f;
     public float turnSpeed = 0.4f; // Vitesse de rotation
@@ -151,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
         died = true;
         gameManager.InitiateEndGame(this.gameObject);
         explosion.Play();
+        exploSound.Play();
         Destroy(GameObject.Find("Player Trail"));
         
     }
