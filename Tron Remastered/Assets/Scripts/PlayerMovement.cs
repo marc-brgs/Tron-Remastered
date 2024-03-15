@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private GameManager gameManager = GameManager.instance;
     public bool solo = false;
 
+    public AudioSource engineSound;
     public float forwardSpeed = 10f; // Vitesse de déplacement avant
     public float brakePower = 16f;
     public float turnSpeed = 0.4f; // Vitesse de rotation
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Move();
             }
+            engineSound.pitch = 1.2f + (forwardSpeed - minStraightSpeed) / (maxStraightSpeed - minStraightSpeed) * 1.2f;
         }
     }
 
