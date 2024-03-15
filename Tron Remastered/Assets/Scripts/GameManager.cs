@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
         if (playerView != null && playerView.GetComponent<PlayerMovement>() != null)
         {
             float speedMultiplier = 2f;
-            speed.text = (playerView.GetComponent<PlayerMovement>().forwardSpeed * speedMultiplier).ToString("F1");
+            speed.text = (playerView.GetComponent<PlayerMovement>().forwardSpeed * speedMultiplier).ToString("F0");
         }
     }
 
