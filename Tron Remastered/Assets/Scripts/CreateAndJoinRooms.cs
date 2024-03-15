@@ -28,6 +28,11 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRoom(roomInput.text);
     }
 
+    public void QuitApp()
+    {
+        Application.Quit();
+    }
+
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("Game");

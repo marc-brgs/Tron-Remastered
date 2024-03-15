@@ -12,10 +12,12 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public Camera camera;
     public GameObject playerView;
-    public TMP_Text speed;
+    
+    public GameObject hudPanel;
     public GameObject gameOverPanel;
     public GameObject winPanel;
     public GameObject waitingPanel;
+    public TMP_Text speed;
     public Slider boostSlider;
 
     public Material[] playerMaterials;
@@ -75,6 +77,7 @@ public class GameManager : MonoBehaviour
         photonView.RPC("SetColor", RpcTarget.AllBuffered, playerViewID);
         gameStarted = true;
         waitingPanel.SetActive(false);
+        hudPanel.SetActive(true);
     }
 
     public void RestartGame()
@@ -164,6 +167,7 @@ public class GameManager : MonoBehaviour
             camera.GetComponent<CameraDrift>().speed = .5f;
             camera.GetComponent<CameraDrift>().offset = new Vector3(0f, 100f, 0f);
             gameOverPanel.SetActive(true);
+            hudPanel.SetActive(false);
         }
         else // Win
         {
@@ -171,6 +175,7 @@ public class GameManager : MonoBehaviour
             camera.GetComponent<CameraDrift>().speed = .5f;
             camera.GetComponent<CameraDrift>().offset = new Vector3(0f, 100f, 0f);
             winPanel.SetActive(true);
+            hudPanel.SetActive(false);
         }
         gameEnded = true;
     }
