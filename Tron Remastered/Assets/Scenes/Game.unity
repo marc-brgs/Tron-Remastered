@@ -577,9 +577,9 @@ MonoBehaviour:
   cylinderPrefab: {fileID: 2679768731795436336, guid: 272538c64526ad54baa7fc95c2d6770e, type: 3}
   numberOfObstacles: 20
   numberOfRamps: 20
-  numberOfCylinders: 5
+  numberOfCylinders: 20
   spawnRadius: 200
-  minDistance: 20
+  minDistance: 30
 --- !u!82 &2011789965
 AudioSource:
   m_ObjectHideFlags: 0

@@ -107,8 +107,6 @@ public class ObstacleSpawner : MonoBehaviour
                 // Si le collider est marqué comme sol, ignore-le et continue à vérifier les autres colliders
                 continue;
             }
-
-            // Si un autre collider est détecté (et n'est pas le sol), la position n'est pas valide
             return false;
         }
         // Si aucun autre collider (autre que le sol) n'est détecté, la position est valide
